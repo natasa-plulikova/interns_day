@@ -1,9 +1,11 @@
 # Project of Stefan Otto Novak
 from csv import reader
-List = []
+List_Recordings = []
+REQUESTS = {}
 
 
-class Person:
+
+class Record:
     def __init__(self, id, timestamp, number_of_requests, number_of_errors, response_time, cpu_cores, memory_usage, cpu_usage):
         self.id = id
         self.timestamp = timestamp
@@ -15,10 +17,8 @@ class Person:
         self.cpu_usage = cpu_usage
 
 
-
-
 # Load the data
-with open('train.csv', 'r') as file:    # skip the first line(the header)
+with open('data/train.csv', 'r') as file:    # skip the first line(the header)
     file_csv = reader(file)
     head = next(file_csv)
 
@@ -34,10 +34,27 @@ with open('train.csv', 'r') as file:    # skip the first line(the header)
             cpu_cores = a_data[5]
             memory_usage = a_data[6]
             cpu_usage = a_data[7]
-            new_person = Person(id, timestamp, number_of_requests, number_of_errors, response_time, cpu_cores, memory_usage, cpu_usage)
 
-            List.append(new_person)
+            new_record = Record(id, timestamp, number_of_requests, number_of_errors, response_time, cpu_cores, memory_usage, cpu_usage)
+            List_Recordings.append(new_record)
 
 
-for ll in List:
-    print(ll.id)
+
+# At what time are most requests
+for record in List_Recordings:
+    hour = int(record.timestamp[12:14])
+    #print(hour)
+    if REQUESTS.__contains__(hour):
+        REQUESTS[hour] += 1
+    else:
+        REQUESTS[hour] = 1
+
+print(str(REQUESTS[13]) + " requets at hour 17")
+
+
+
+
+
+
+
+
