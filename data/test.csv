@@ -1,4 +1,4 @@
-,timestamp,number_of_requests,number_of_errors,response_time,cpu_cores,memory_usage
+id,timestamp,number_of_requests,number_of_errors,response_time,cpu_cores,memory_usage
 51601,2022-01-25 16:52:27,6013,1.0,13839.534810905836,6,0.3322820784951408
 51602,2022-01-25 16:52:32,8834,0.0,14657.60945108924,6,0.9312170069069308
 51603,2022-01-25 16:52:37,7971,0.0,14137.22161759232,6,0.803488249137449
